@@ -4,14 +4,20 @@
 # the league app. Its key role is to simplify the importing of various **statistical
 # calculation classes**. Instead of importing from deep file paths (e.g.,
 
-from .standings import StandingsCalculator
-from .top_scorers import TopScorersCalculator
-from .clean_sheets import CleanSheetCalculator
-from .discplinary import DiscplinaryCalculator
+from .standings import StandingsCalculator, TeamStanding
+from .top_scorers import TopScorersCalculator, PlayerStats
+from .clean_sheets import CleanSheetCalculator, CleanSheetStats
+from .discplinary import DiscplinaryCalculator, DisciplinaryStats, TeamDisciplinaryStats
 
 __all__= [
     'StandingsCalculator',
+    'TeamStanding',
+    'PlayerStats',
+    'CleanSheetStats',
+    'GoalkeeperCleanSheetStats',
+    'DisciplinaryStats',
     'TopScorersCalculator',
     'CleanSheetCalculator',
-    'DiscplinaryCalculator' 
+    'DiscplinaryCalculator',
+    'TeamDisciplinaryStats' 
 ]

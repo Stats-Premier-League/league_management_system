@@ -10,7 +10,7 @@ from typing import List, Dict, Any
 from dataclasses import dataclass
 
 @dataclass
-class CleanSheet:
+class CleanSheetStats:
     """Data structure for clean sheet statistics."""
     team_id: int
     team_name: str
@@ -82,7 +82,7 @@ class CleanSheetCalculator:
             clean_sheet_stats.append(stats)
 
         # Sort by clean sheets (descending), then by percentage
-        clean_sheet_stats.cort(key=lambda x: (-x.clean_sheets, -x.clean_sheet_percentage))
+        clean_sheet_stats.sort(key=lambda x: (-x.clean_sheets, -x.clean_sheet_percentage))
 
         return clean_sheet_stats
 
@@ -109,7 +109,7 @@ class CleanSheetCalculator:
             # Get matches where this goalkeeper's team played
             from apps.matches.models import Match
             team_matches = Match.objects.filter(
-                seasons=self.season,
+                season=self.season,
                 status='completed'
             ).filter(
                 Q(home_team=gk.team) | Q(away_team=gk.team)
@@ -125,7 +125,7 @@ class CleanSheetCalculator:
                 elif match.away_team == gk.team and match.home_score == 0:
                     clean_sheets += 1
 
-                # Count goals against
+                # Count goals against: reminder to check line 129 
                 if match.home_team == gk.team:
                     goals_against += match.away_score
                 else:

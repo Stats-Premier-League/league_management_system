@@ -41,6 +41,20 @@ class League(BaseModel):
     def get_current_seasons(self):
         """Get current active seasons"""
         return self.seasons.filter(is_Active=True, is_current=True).first()
+
+    # Changes
+    
+    def get_current_season(self):
+        """Get the currently active season"""
+        return self.seasons.filter(is_active=True, is_current=True).first()
+    
+    def get_upcoming_season(self):
+        """Get the next upcoming season"""
+        from django.utils import timezone
+        return self.seasons.filter(
+            is_active=True,
+            start_date__gt=timezone.now().date()
+        ).order_by('start_date').first()    
     
 class Season(BaseModel):
     """
@@ -111,3 +125,4 @@ class Season(BaseModel):
     #     from .algorithms.discplinary import DiscplinaryCalculator
     #     calculator = DiscplinaryCalculator(self)
     #     return calculator.calculate_discplinary_stats()
+
