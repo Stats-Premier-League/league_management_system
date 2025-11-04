@@ -11,13 +11,14 @@ from dataclasses import dataclass
 
 @dataclass
 class DisciplinaryStats:
-    """Data stracture for disciplinary statistics"""
+    """Data structure for disciplinary statistics"""
     player_id: int
     player_name: str
     team_name: str
-    yellow_card: int = 0
+    yellow_cards: int = 0
     red_cards: int = 0
-    total_cards =int = str
+    total_cards = int = 0
+    suspension_games: int = 0
 
 @dataclass
 class TeamDisciplinaryStats:

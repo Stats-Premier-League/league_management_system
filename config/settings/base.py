@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Local apps
     'apps.core',
     'app.league',
+    'app.matches',
 ]
 
 MIDDLEWARE = [

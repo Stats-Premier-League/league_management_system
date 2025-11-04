@@ -5,8 +5,9 @@
 # and make them directly accessible when a developer imports the main package.
 # This simplifies imports for other parts of the Django project.
 
-from .league import League, Season
+from .league import League
 from .team import Team
+from .season import Season
 from .player import Player
 
 __all__ = ['League', 'Season', 'Team', 'Player']
